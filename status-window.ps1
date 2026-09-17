@@ -1,4 +1,4 @@
-#Requires -Version 5.1
+﻿#Requires -Version 5.1
 <#
 .SYNOPSIS
   Floating status window for the tem-ord-cards CI/CD monitor.
@@ -47,10 +47,10 @@ function br([string]$hex) { [System.Windows.Media.SolidColorBrush]::new((mc $hex
 
 # ── Status palette: Bg / text-Fg / accent-Bar / sub-Fg ──────────────────────
 $STATES = @{
-    Idle    = @('#0D2640','#4A82AA','#3A6A9A','#1E3D55')
-    Running = @('#1A1008','#C9924A','#B07A30','#4A3810')
-    Pending = @('#1A1008','#C9924A','#B07A30','#4A3810')
-    Pass    = @('#081E14','#3DAA7D','#2A9A6A','#1A4A30')
+    Idle    = @('#111F0C','#6AAA28','#508018','#2A4218')
+    Running = @('#1A1800','#CCB020','#AA8810','#4A4000')
+    Pending = @('#1A1800','#CCB020','#AA8810','#4A4000')
+    Pass    = @('#081808','#3CC03C','#28A028','#184018')
     Fail    = @('#1E0808','#C44B4B','#A43A3A','#4A1818')
 }
 
@@ -65,7 +65,7 @@ $STATES = @{
     ResizeMode="CanResizeWithGrip"
     MinWidth="360" MinHeight="480">
 
-  <Window.Background><SolidColorBrush Color="#071B2E"/></Window.Background>
+  <Window.Background><SolidColorBrush Color="#0A1808"/></Window.Background>
 
   <Window.Resources>
     <Style x:Key="Btn" TargetType="Button">
@@ -104,27 +104,27 @@ $STATES = @{
     </Grid.RowDefinitions>
 
     <!-- Top bar -->
-    <Grid Grid.Row="0" Background="#030F1E">
+    <Grid Grid.Row="0" Background="#060E04">
       <TextBlock Text="TEM-ORD-CARDS  ·  DEPLOY MONITOR"
-                 Foreground="#163040" FontFamily="Consolas" FontSize="10" FontWeight="Bold"
+                 Foreground="#4A7828" FontFamily="Consolas" FontSize="10" FontWeight="Bold"
                  VerticalAlignment="Center" Margin="14,0,0,0"/>
       <TextBlock Name="RefreshLabel" Text="—"
-                 Foreground="#163040" FontFamily="Consolas" FontSize="10"
+                 Foreground="#4A7828" FontFamily="Consolas" FontSize="10"
                  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,14,0"/>
     </Grid>
 
     <!-- Status banner -->
     <Grid Grid.Row="1">
-      <Border Name="StatusBanner" Background="#0D2640" Padding="24,0,14,0">
+      <Border Name="StatusBanner" Background="#111F0C" Padding="24,0,14,0">
         <StackPanel VerticalAlignment="Center">
           <TextBlock Name="StatusWord" Text="IDLE"
                      FontFamily="Segoe UI" FontSize="46" FontWeight="Black"
-                     Foreground="#4A82AA" LineHeight="50"/>
+                     Foreground="#6AAA28" LineHeight="50"/>
           <TextBlock Name="StatusSub" Text="Waiting for next deployment"
-                     FontFamily="Consolas" FontSize="11" Foreground="#1E3D55" Margin="2,5,0,0"/>
+                     FontFamily="Consolas" FontSize="11" Foreground="#2A4218" Margin="2,5,0,0"/>
         </StackPanel>
       </Border>
-      <Rectangle Name="AccentBar" Width="4" HorizontalAlignment="Left" Fill="#3A6A9A"/>
+      <Rectangle Name="AccentBar" Width="4" HorizontalAlignment="Left" Fill="#508018"/>
     </Grid>
 
     <!-- Info grid -->
@@ -141,21 +141,21 @@ $STATES = @{
         <RowDefinition Height="24"/>
       </Grid.RowDefinitions>
 
-      <TextBlock Grid.Row="0" Grid.Column="0" Text="latest deploy"  Foreground="#163040" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Grid.Row="1" Grid.Column="0" Text="last tested"    Foreground="#163040" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Grid.Row="2" Grid.Column="0" Text="checked at"     Foreground="#163040" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Grid.Row="3" Grid.Column="0" Text="healthcheck"    Foreground="#163040" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Grid.Row="4" Grid.Column="0" Text="scheduler"      Foreground="#163040" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
+      <TextBlock Grid.Row="0" Grid.Column="0" Text="latest deploy"  Foreground="#4A7828" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
+      <TextBlock Grid.Row="1" Grid.Column="0" Text="last tested"    Foreground="#4A7828" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
+      <TextBlock Grid.Row="2" Grid.Column="0" Text="checked at"     Foreground="#4A7828" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
+      <TextBlock Grid.Row="3" Grid.Column="0" Text="healthcheck"    Foreground="#4A7828" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
+      <TextBlock Grid.Row="4" Grid.Column="0" Text="scheduler"      Foreground="#4A7828" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
 
-      <TextBlock Name="ValLatest"    Grid.Row="0" Grid.Column="1" Text="—" Foreground="#7AAAC8" FontFamily="Consolas" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
-      <TextBlock Name="ValTested"    Grid.Row="1" Grid.Column="1" Text="—" Foreground="#7AAAC8" FontFamily="Consolas" FontSize="12" VerticalAlignment="Center"/>
-      <TextBlock Name="ValCheck"     Grid.Row="2" Grid.Column="1" Text="—" Foreground="#2A5070" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Name="ValHealth"    Grid.Row="3" Grid.Column="1" Text="—" Foreground="#2A5070" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Name="ValScheduler" Grid.Row="4" Grid.Column="1" Text="—" Foreground="#2A5070" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
+      <TextBlock Name="ValLatest"    Grid.Row="0" Grid.Column="1" Text="—" Foreground="#D0E050" FontFamily="Consolas" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
+      <TextBlock Name="ValTested"    Grid.Row="1" Grid.Column="1" Text="—" Foreground="#D0E050" FontFamily="Consolas" FontSize="12" VerticalAlignment="Center"/>
+      <TextBlock Name="ValCheck"     Grid.Row="2" Grid.Column="1" Text="—" Foreground="#5A8A30" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
+      <TextBlock Name="ValHealth"    Grid.Row="3" Grid.Column="1" Text="—" Foreground="#5A8A30" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
+      <TextBlock Name="ValScheduler" Grid.Row="4" Grid.Column="1" Text="—" Foreground="#5A8A30" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
     </Grid>
 
     <!-- Log panel -->
-    <Border Grid.Row="3" Background="#030F1E" Margin="14,10,14,0"
+    <Border Grid.Row="3" Background="#060E04" Margin="14,10,14,0"
             CornerRadius="3" Padding="10,8">
       <ScrollViewer Name="LogScroll" VerticalScrollBarVisibility="Auto"
                     HorizontalScrollBarVisibility="Disabled">
@@ -173,18 +173,18 @@ $STATES = @{
         <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
       <TextBlock Name="CountdownLabel" Grid.Column="0"
-                 Text="" Foreground="#162A3A" FontFamily="Consolas" FontSize="10"
+                 Text="" Foreground="#2A4A18" FontFamily="Consolas" FontSize="10"
                  VerticalAlignment="Center"/>
       <Button Name="BtnRunNow" Grid.Column="1"
               Style="{StaticResource Btn}"
               Content="▶  Run Now"
               Padding="16,8" FontWeight="SemiBold"
-              Background="#4A2808" Foreground="#C9924A"/>
+              Background="#3A3200" Foreground="#CCB020"/>
       <Button Name="BtnOpenLog" Grid.Column="3"
               Style="{StaticResource Btn}"
               Content="Open Log"
               Padding="14,8"
-              Background="#0D2640" Foreground="#2A5070"/>
+              Background="#111F0C" Foreground="#5A8A30"/>
     </Grid>
   </Grid>
 </Window>
@@ -233,12 +233,12 @@ function Set-Status([string]$key, [string]$word, [string]$sub) {
 function Add-LogLine([string]$line) {
     $run = [System.Windows.Documents.Run]::new("$line`n")
     $run.Foreground = switch -Regex ($line) {
-        '\[PASS\]'  { br '#1A5A38' }
+        '\[PASS\]'  { br '#1A5A1A' }
         '\[FAIL\]'  { br '#5A2020' }
-        '\[WARN\]'  { br '#4A3818' }
+        '\[WARN\]'  { br '#4A4210' }
         '\[ERROR\]' { br '#6A2020' }
-        'Running PDF tests|Starting PDF' { br '#2A4A68' }
-        default     { br '#1E3D55' }
+        'Running PDF tests|Starting PDF' { br '#2A4A10' }
+        default     { br '#2A4218' }
     }
     $logBlock.Inlines.Add($run)
 }
@@ -273,13 +273,13 @@ function Update-UI {
     $hcLine = $lines | Where-Object { $_ -match '(Healthcheck|healthcheck)' } | Select-Object -Last 1
     if ($hcLine -match 'OK') {
         $valHealth.Text       = '✓  reachable (VPN up)'
-        $valHealth.Foreground = br '#2A6A4A'
+        $valHealth.Foreground = br '#2A6A2A'
     } elseif ($hcLine -match 'skipped') {
         $valHealth.Text       = '⊘  skipped — VPN not up'
-        $valHealth.Foreground = br '#2A5070'
+        $valHealth.Foreground = br '#5A8A30'
     } else {
         $valHealth.Text       = '—'
-        $valHealth.Foreground = br '#2A5070'
+        $valHealth.Foreground = br '#5A8A30'
     }
 
     # scheduler
@@ -375,3 +375,4 @@ Update-UI
 $window.ShowDialog() | Out-Null
 $ticker.Stop()
 $refreshTimer.Stop()
+
