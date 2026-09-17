@@ -60,10 +60,10 @@ $STATES = @{
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="tem-ord-cards Monitor"
-    Width="430" Height="590"
+    Width="430" Height="660"
     WindowStyle="SingleBorderWindow"
     ResizeMode="CanResizeWithGrip"
-    MinWidth="360" MinHeight="480">
+    MinWidth="360" MinHeight="540">
 
   <Window.Background><SolidColorBrush Color="#0A1808"/></Window.Background>
 
@@ -106,10 +106,10 @@ $STATES = @{
     <!-- Top bar -->
     <Grid Grid.Row="0" Background="#060E04">
       <TextBlock Text="TEM-ORD-CARDS  ·  DEPLOY MONITOR"
-                 Foreground="#4A7828" FontFamily="Consolas" FontSize="10" FontWeight="Bold"
+                 Foreground="#4A7828" FontFamily="Consolas" FontSize="14" FontWeight="Bold"
                  VerticalAlignment="Center" Margin="14,0,0,0"/>
       <TextBlock Name="RefreshLabel" Text="—"
-                 Foreground="#4A7828" FontFamily="Consolas" FontSize="10"
+                 Foreground="#4A7828" FontFamily="Consolas" FontSize="14"
                  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,14,0"/>
     </Grid>
 
@@ -118,10 +118,10 @@ $STATES = @{
       <Border Name="StatusBanner" Background="#111F0C" Padding="24,0,14,0">
         <StackPanel VerticalAlignment="Center">
           <TextBlock Name="StatusWord" Text="IDLE"
-                     FontFamily="Segoe UI" FontSize="46" FontWeight="Black"
+                     FontFamily="Segoe UI" FontSize="52" FontWeight="Black"
                      Foreground="#6AAA28" LineHeight="50"/>
           <TextBlock Name="StatusSub" Text="Waiting for next deployment"
-                     FontFamily="Consolas" FontSize="11" Foreground="#2A4218" Margin="2,5,0,0"/>
+                     FontFamily="Consolas" FontSize="13" Foreground="#2A4218" Margin="2,5,0,0"/>
         </StackPanel>
       </Border>
       <Rectangle Name="AccentBar" Width="4" HorizontalAlignment="Left" Fill="#508018"/>
@@ -141,17 +141,17 @@ $STATES = @{
         <RowDefinition Height="24"/>
       </Grid.RowDefinitions>
 
-      <TextBlock Grid.Row="0" Grid.Column="0" Text="latest deploy"  Foreground="#4A7828" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Grid.Row="1" Grid.Column="0" Text="last tested"    Foreground="#4A7828" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Grid.Row="2" Grid.Column="0" Text="checked at"     Foreground="#4A7828" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Grid.Row="3" Grid.Column="0" Text="healthcheck"    Foreground="#4A7828" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Grid.Row="4" Grid.Column="0" Text="scheduler"      Foreground="#4A7828" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
+      <TextBlock Grid.Row="0" Grid.Column="0" Text="latest deploy"  Foreground="#4A7828" FontFamily="Consolas" FontSize="13" VerticalAlignment="Center"/>
+      <TextBlock Grid.Row="1" Grid.Column="0" Text="last tested"    Foreground="#4A7828" FontFamily="Consolas" FontSize="13" VerticalAlignment="Center"/>
+      <TextBlock Grid.Row="2" Grid.Column="0" Text="checked at"     Foreground="#4A7828" FontFamily="Consolas" FontSize="13" VerticalAlignment="Center"/>
+      <TextBlock Grid.Row="3" Grid.Column="0" Text="healthcheck"    Foreground="#4A7828" FontFamily="Consolas" FontSize="13" VerticalAlignment="Center"/>
+      <TextBlock Grid.Row="4" Grid.Column="0" Text="scheduler"      Foreground="#4A7828" FontFamily="Consolas" FontSize="13" VerticalAlignment="Center"/>
 
-      <TextBlock Name="ValLatest"    Grid.Row="0" Grid.Column="1" Text="—" Foreground="#D0E050" FontFamily="Consolas" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
-      <TextBlock Name="ValTested"    Grid.Row="1" Grid.Column="1" Text="—" Foreground="#D0E050" FontFamily="Consolas" FontSize="12" VerticalAlignment="Center"/>
-      <TextBlock Name="ValCheck"     Grid.Row="2" Grid.Column="1" Text="—" Foreground="#5A8A30" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Name="ValHealth"    Grid.Row="3" Grid.Column="1" Text="—" Foreground="#5A8A30" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
-      <TextBlock Name="ValScheduler" Grid.Row="4" Grid.Column="1" Text="—" Foreground="#5A8A30" FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"/>
+      <TextBlock Name="ValLatest"    Grid.Row="0" Grid.Column="1" Text="—" Foreground="#D0E050" FontFamily="Consolas" FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
+      <TextBlock Name="ValTested"    Grid.Row="1" Grid.Column="1" Text="—" Foreground="#D0E050" FontFamily="Consolas" FontSize="14" VerticalAlignment="Center"/>
+      <TextBlock Name="ValCheck"     Grid.Row="2" Grid.Column="1" Text="—" Foreground="#5A8A30" FontFamily="Consolas" FontSize="13" VerticalAlignment="Center"/>
+      <TextBlock Name="ValHealth"    Grid.Row="3" Grid.Column="1" Text="—" Foreground="#5A8A30" FontFamily="Consolas" FontSize="13" VerticalAlignment="Center"/>
+      <TextBlock Name="ValScheduler" Grid.Row="4" Grid.Column="1" Text="—" Foreground="#5A8A30" FontFamily="Consolas" FontSize="13" VerticalAlignment="Center"/>
     </Grid>
 
     <!-- Log panel -->
@@ -159,8 +159,8 @@ $STATES = @{
             CornerRadius="3" Padding="10,8">
       <ScrollViewer Name="LogScroll" VerticalScrollBarVisibility="Auto"
                     HorizontalScrollBarVisibility="Disabled">
-        <TextBlock Name="LogBlock" FontFamily="Consolas" FontSize="11"
-                   TextWrapping="Wrap" LineHeight="17"/>
+        <TextBlock Name="LogBlock" FontFamily="Consolas" FontSize="13"
+                   TextWrapping="Wrap" LineHeight="20"/>
       </ScrollViewer>
     </Border>
 
@@ -173,7 +173,7 @@ $STATES = @{
         <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
       <TextBlock Name="CountdownLabel" Grid.Column="0"
-                 Text="" Foreground="#2A4A18" FontFamily="Consolas" FontSize="10"
+                 Text="" Foreground="#2A4A18" FontFamily="Consolas" FontSize="14"
                  VerticalAlignment="Center"/>
       <Button Name="BtnRunNow" Grid.Column="1"
               Style="{StaticResource Btn}"
@@ -375,4 +375,5 @@ Update-UI
 $window.ShowDialog() | Out-Null
 $ticker.Stop()
 $refreshTimer.Stop()
+
 
