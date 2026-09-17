@@ -119,7 +119,7 @@ $STATES = @{
         <StackPanel VerticalAlignment="Center">
           <TextBlock Name="StatusWord" Text="IDLE"
                      FontFamily="Segoe UI" FontSize="46" FontWeight="Black"
-                     Foreground="#4A82AA" LineHeight="50" LetterSpacing="-1"/>
+                     Foreground="#4A82AA" LineHeight="50"/>
           <TextBlock Name="StatusSub" Text="Waiting for next deployment"
                      FontFamily="Consolas" FontSize="11" Foreground="#1E3D55" Margin="2,5,0,0"/>
         </StackPanel>
