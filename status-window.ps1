@@ -194,21 +194,29 @@ $STATES = @{
 $reader = [System.Xml.XmlNodeReader]::new($XAML)
 $window = [Windows.Markup.XamlReader]::Load($reader)
 
-$statusBanner    = $window.FindName('StatusBanner')
-$statusWord      = $window.FindName('StatusWord')
-$statusSub       = $window.FindName('StatusSub')
-$accentBar       = $window.FindName('AccentBar')
-$refreshLabel    = $window.FindName('RefreshLabel')
-$valLatest       = $window.FindName('ValLatest')
-$valTested       = $window.FindName('ValTested')
-$valCheck        = $window.FindName('ValCheck')
-$valHealth       = $window.FindName('ValHealth')
-$valScheduler    = $window.FindName('ValScheduler')
-$logBlock        = $window.FindName('LogBlock')
-$logScroll       = $window.FindName('LogScroll')
-$btnRunNow       = $window.FindName('BtnRunNow')
-$btnOpenLog      = $window.FindName('BtnOpenLog')
-$countdownLabel  = $window.FindName('CountdownLabel')
+# XamlReader.Load() doesn't always register all named elements in the window
+# namescope; fall back to LogicalTreeHelper which walks the tree directly.
+function Find-WpfControl([string]$name) {
+    $ctrl = $window.FindName($name)
+    if (-not $ctrl) { $ctrl = [System.Windows.LogicalTreeHelper]::FindLogicalNode($window, $name) }
+    $ctrl
+}
+
+$statusBanner    = Find-WpfControl 'StatusBanner'
+$statusWord      = Find-WpfControl 'StatusWord'
+$statusSub       = Find-WpfControl 'StatusSub'
+$accentBar       = Find-WpfControl 'AccentBar'
+$refreshLabel    = Find-WpfControl 'RefreshLabel'
+$valLatest       = Find-WpfControl 'ValLatest'
+$valTested       = Find-WpfControl 'ValTested'
+$valCheck        = Find-WpfControl 'ValCheck'
+$valHealth       = Find-WpfControl 'ValHealth'
+$valScheduler    = Find-WpfControl 'ValScheduler'
+$logBlock        = Find-WpfControl 'LogBlock'
+$logScroll       = Find-WpfControl 'LogScroll'
+$btnRunNow       = Find-WpfControl 'BtnRunNow'
+$btnOpenLog      = Find-WpfControl 'BtnOpenLog'
+$countdownLabel  = Find-WpfControl 'CountdownLabel'
 
 # ── Apply status palette ──────────────────────────────────────────────────────
 function Set-Status([string]$key, [string]$word, [string]$sub) {
